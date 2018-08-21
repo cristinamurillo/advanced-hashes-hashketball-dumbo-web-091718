@@ -18,6 +18,30 @@ def game_hash
            }}
        }
 end
+
+#super bonus methods
+def long_name_steals_a_ton?
+   most_steals = 0
+   steal_master = ""
+  game_hash.each { |home_away, team_info|
+    team_info.each { |key, value|
+      if key.to_s == "players"
+        value.each { |player, stats|
+          stats.each { |category, number|
+            if category.to_s == "steals"
+              if most_steals < number
+                most_steals = number
+                steal_master = player 
+              end
+            end 
+          }
+        }
+      end
+    }
+  }
+  steal_master == player_with_longest_name ? true : false
+end
+
 #bonus methods 
 def player_with_longest_name
   biggest_size = 0
