@@ -25,7 +25,7 @@ def long_name_steals_a_ton?
    steal_master = ""
   game_hash.each { |home_away, team_info|
     team_info.each { |key, value|
-      if key.to_s == "players"
+      if key == :players 
         value.each { |player, stats|
           stats.each { |category, number|
             if category.to_s == "steals"
@@ -48,7 +48,7 @@ def player_with_longest_name
   longest_name = ""
    game_hash.each { |home_away, team_info|
     team_info.each { |key, value|
-      if key.to_s == "players"
+      if key == :players 
         value.each { |name, stats|
           if biggest_size < name.length 
             biggest_size = name.length
